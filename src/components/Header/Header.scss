@@ -1,23 +1,23 @@
 .header {
-    height: 80px;
+    height: auto;
     background-color: #4C2B36;
     color: #d4f4dd;
 
+    padding: 0 50px;
+
     &__auth-wrapper {
-        height: 100%;
         display: flex;
         justify-content: flex-end;
+        flex-wrap: wrap;
     }
 
     &__auth-item {
-        height: 100%;
+        height: 80px;
         display: flex;
         align-items: center;
         padding: 0 15px;
 
-        &:last-child {
-            margin-right: 50px;
-        }
+        cursor: default;
 
         &:nth-child(2n+1) {
             cursor: pointer;
@@ -32,6 +32,10 @@
     &__auth-item-text {
         font-weight: 700;
         letter-spacing: 1.2px;
+    }
+
+    @media (max-width: 600px) {
+
     }
 }
 

@@ -1,0 +1,134 @@
+.registration {
+    box-sizing: border-box;
+
+    &__background {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        height: 100%;
+        width: 100%;
+
+        background-color: #000000;
+        opacity: 0.5;
+
+    }
+
+    &__popup-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        background: #e9f1f7;
+        z-index: 1;
+
+        width: 290px;
+        height: 385px;
+
+        border-radius: 15px;
+        padding-bottom: 20px;
+    }
+
+    &__popup-close {
+        position: absolute;
+        top: -20px;
+        left: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        text-transform: uppercase;
+        background-color: #db504a;
+        font-weight: 900;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    &__popup-role-wrapper {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1.25px;
+
+        :last-child {
+            border-left: solid 1px #000000;
+        }
+    }
+
+    &__popup-role-button {
+        width: 50%;
+        height: 100%;
+
+        box-sizing: border-box;
+
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+        border-bottom: solid 1px #000000;
+        transition: all 0.3s ease;
+
+        &:first-child {
+            border-top-left-radius: 15px;
+        }
+
+        &:last-child {
+            border-top-right-radius: 15px;
+        }
+
+        cursor: pointer;
+
+        &_active {
+            background-color: #08b2e3;
+        }
+
+        &:hover {
+            background-color: #08b2e3;
+        }
+    }
+
+    &__popup-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+
+    &__popup-form-input {
+        width: 100%;
+        margin: 20px 15px 0;
+        height: 35px;
+        border: none;
+        border-radius: 5px;
+        padding: 1px 10px 2px;
+        outline: none;
+        &:focus {
+            border: solid 1px #94bfa7;
+        }
+    }
+
+    &__popup-form-submit {
+        width: auto;
+        height: 40px;
+        padding: 1px 20px 2px;
+        margin-top: 50px;
+        border: none;
+        background-color: #c6ecae;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.25px;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: #94bfa7;
+        }
+    }
+}
