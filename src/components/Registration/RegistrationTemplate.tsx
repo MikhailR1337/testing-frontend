@@ -35,7 +35,7 @@ export function RegistrationTemplate({
     });
 
     const {
-        company,
+        name: companyName,
         login: companyLogin,
         password: companyPassword,
     } = formValuesCompany;
@@ -79,10 +79,10 @@ export function RegistrationTemplate({
                             <input
                                 onChange={(e) => valueCompanyHandler(e)}
                                 className={`${ROOT_CLASS}__popup-form-input`}
-                                name='company'
+                                name='name'
                                 type='text'
                                 placeholder='Компания'
-                                value={company}
+                                value={companyName}
                             />
                             <input
                                 onChange={(e) => valueCompanyHandler(e)}

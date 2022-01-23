@@ -7,7 +7,7 @@ interface Props {
 }
 
 export interface FormValuesCompany {
-    company: string;
+    name: string;
     login: string;
     password: string;
 }
@@ -24,7 +24,7 @@ export function RegistrationBehaviour({
 }: Props) {
     const [role, setRole] = useState(Role.INIT);
     const [FormValuesCompany, setFormValuesCompany] = useState({
-        company: '',
+        name: '',
         login: '',
         password: '',
     })
@@ -38,7 +38,7 @@ export function RegistrationBehaviour({
     const setRoleHandler = (role: Role) => {
         if (role === Role.APPLICANT) {
             setFormValuesCompany({
-                company: '',
+                name: '',
                 login: '',
                 password: '',
             });
@@ -65,9 +65,17 @@ export function RegistrationBehaviour({
         setFormValuesApplicant({ ...FormValuesApplicant, [name]: value });
     }
 
-    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log('formValues', FormValuesCompany, FormValuesApplicant);
+        console.log(JSON.stringify(FormValuesCompany));
+        const response = await fetch('http://localhost:3000/company', {
+            method: 'POST',
+            body: JSON.stringify(FormValuesCompany),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log("RESPONSE", response);
     }
 
     return (
