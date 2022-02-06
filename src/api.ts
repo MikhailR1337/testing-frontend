@@ -1,7 +1,7 @@
 export const serviceApi = {
-    loginCompany: '/company/login',
-    registrationCompany: '/company/registrartion',
-    loginCandidate: '/candidate/login',
+    loginCompany: 'http://localhost:3000/company/login',
+    registrationCompany: 'http://localhost:3000/company/registration',
+    loginCandidate: 'http://localhost:3000/candidate/login',
 }
 
 export enum ApiActions {
