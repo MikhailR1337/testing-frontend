@@ -43,6 +43,15 @@ export function AuthFormBehaviour({
         setFormValuesCandidate({ ...FormValuesCandidate, [name]: value });
     }
 
+    const newUserStatusHandler = (newUserStatus: NewUserStatus) => {
+        setNewUserStatus(newUserStatus);
+        setFormValuesCompany({
+            name: '',
+            login: '',
+            password: '',
+        })
+    }
+
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>, action: ApiActions) => {
         event.preventDefault();
 
@@ -85,7 +94,7 @@ export function AuthFormBehaviour({
             valueCompanyHandler={valueCompanyHandler}
             onSubmit={onSubmit}
             setNewUserRole={setNewUserRole}
-            setNewUserStatus={setNewUserStatus}
+            newUserStatusHandler={newUserStatusHandler}
         />
     )
 }

@@ -15,7 +15,7 @@ interface Props {
     valueCompanyHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onSubmit: (event: React.FormEvent<HTMLFormElement>, action: ApiActions) => void;
     setNewUserRole: (status: Role) => void;
-    setNewUserStatus: (newUserStatus: NewUserStatus) => void;
+    newUserStatusHandler: (newUserStatus: NewUserStatus) => void;
 }
 
 const ROOT_CLASS = 'auth-form';
@@ -29,7 +29,7 @@ export function AuthFormTemplate({
     valueCompanyHandler,
     onSubmit,
     setNewUserRole,
-    setNewUserStatus,
+    newUserStatusHandler,
 }: Props) {
     const registationStatusClassNames = classnames(`${ROOT_CLASS}__popup-status-button`, {
         [`${ROOT_CLASS}__popup-status-button_active`]: newUserStatus === NewUserStatus.REGISTRATION,
@@ -104,13 +104,13 @@ export function AuthFormTemplate({
                         <>
                             <div className={`${ROOT_CLASS}__popup-status-wrapper`}>
                                     <div
-                                        onClick={() => setNewUserStatus(NewUserStatus.SIGN_IN)}
+                                        onClick={() => newUserStatusHandler(NewUserStatus.SIGN_IN)}
                                         className={singInButtonClassNames}
                                     >
                                         {NewUserStatus.SIGN_IN}
                                     </div>
                                     <div
-                                        onClick={() => setNewUserStatus(NewUserStatus.REGISTRATION)}
+                                        onClick={() => newUserStatusHandler(NewUserStatus.REGISTRATION)}
                                         className={registationStatusClassNames}
                                     >
                                         {NewUserStatus.REGISTRATION}
