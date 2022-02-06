@@ -5,12 +5,12 @@ import { Role } from '../../types';
 
 
 export function HeaderBehaviour() {
-    const [newUserRole, setNewUserRole] = useState(Role.INIT);
+    const [userRole, setUserRole] = useState(Role.INIT);
 
     return (
         <HeaderTemplate
-            newUserRole={newUserRole}
-            setNewUserRole={setNewUserRole}
+            userRole={userRole}
+            setUserRole={setUserRole}
         />
     )
 }

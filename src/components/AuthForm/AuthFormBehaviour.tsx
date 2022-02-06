@@ -5,8 +5,8 @@ import { serviceApi, ApiActions } from '../../api';
 import { Role, NewUserStatus } from '../../types';
 
 interface Props {
-    newUserRole: Role;
-    setNewUserRole: (status: Role) => void;
+    userRole: Role;
+    setUserRole: (status: Role) => void;
 }
 
 export interface FormValuesCompany {
@@ -20,8 +20,8 @@ export interface FormValuesCandidate {
 }
 
 export function AuthFormBehaviour({
-    newUserRole,
-    setNewUserRole,
+    userRole,
+    setUserRole,
 }: Props) {
     const [newUserStatus, setNewUserStatus] = useState(NewUserStatus.INIT);
     const [FormValuesCompany, setFormValuesCompany] = useState({
@@ -75,25 +75,36 @@ export function AuthFormBehaviour({
                 throw new Error('Unknown action');
         }
 
-        await fetch(serviceApi[action], {
+        const response: any = await fetch(serviceApi[action], {
             method: 'POST',
             body,
             headers: {
                 'Content-Type': 'application/json'
             }
         });
+        let data;
+        if (response.ok) {
+            data = await response.json();
+            console.log(data);
+        }
+        if (data.role === Role.AUTH_CANDIDATE) {
+            setUserRole(Role.AUTH_CANDIDATE);
+        }
+        if (data.role === Role.AUTH_COMPANY) {
+            setUserRole(Role.AUTH_COMPANY);
+        }
     }
 
     return (
         <AuthFormTemplate
             FormValuesCandidate={FormValuesCandidate}
             formValuesCompany={FormValuesCompany}
-            newUserRole={newUserRole}
+            userRole={userRole}
             newUserStatus={newUserStatus}
             valueCandidateHandler={valueCandidateHandler}
             valueCompanyHandler={valueCompanyHandler}
             onSubmit={onSubmit}
-            setNewUserRole={setNewUserRole}
+            setUserRole={setUserRole}
             newUserStatusHandler={newUserStatusHandler}
         />
     )
