@@ -1,20 +1,19 @@
 import React from 'react';
 
-import { NewUserStatus } from './HeaderBehaviour';
-import { SignIn } from '../SignIn';
+import { AuthForm } from '../AuthForm';
+import { WelcomeMenu, Role } from '../../types';
 import './Header.scss';
-import { Registration } from '../Registration';
 
 interface Props {
-    newUserStatus: NewUserStatus;
-    setNewUserStatus: (status: NewUserStatus) => void;
+    newUserRole: Role;
+    setNewUserRole: (status: Role) => void;
 }
 
 const ROOT_CLASS = 'header';
 
 export function HeaderTemplate({
-    newUserStatus,
-    setNewUserStatus,
+    newUserRole,
+    setNewUserRole,
 }: Props) {
 
     return (
@@ -22,30 +21,32 @@ export function HeaderTemplate({
             <div className={ROOT_CLASS}>
                 <div className={`${ROOT_CLASS}__auth-wrapper`}>
                     <div
-                        onClick={() => setNewUserStatus(NewUserStatus.SIGN_IN)}
+                        onClick={() => setNewUserRole(Role.CANDIDATE)}
                         className={`${ROOT_CLASS}__auth-item`}
                     >
-                        <span className={`${ROOT_CLASS}__auth-item-text`}>Вход в аккаунт</span>
+                        <span className={`${ROOT_CLASS}__auth-item-text`}>{WelcomeMenu.CANDIDATE}</span>
                     </div>
                     <div className={`${ROOT_CLASS}__auth-item`}>
                         <span className={`${ROOT_CLASS}__auth-item-text`}>|</span>
                     </div>
                     <div
-                        onClick={() => setNewUserStatus(NewUserStatus.REGISTRATION)}
+                        onClick={() => setNewUserRole(Role.COMPANY)}
                         className={`${ROOT_CLASS}__auth-item`}
                     >
-                        <span className={`${ROOT_CLASS}__auth-item-text`}>Зарегистрироваться</span>
+                        <span className={`${ROOT_CLASS}__auth-item-text`}>{WelcomeMenu.COMPANY}</span>
                     </div>
                 </div>
             </div>
-            {newUserStatus === NewUserStatus.SIGN_IN && (
-                <SignIn 
-                    setNewUserStatus={setNewUserStatus}    
+            {newUserRole === Role.CANDIDATE && (
+                <AuthForm
+                    newUserRole={newUserRole}
+                    setNewUserRole={setNewUserRole}    
                 />
             )}
-            {newUserStatus === NewUserStatus.REGISTRATION && (
-                <Registration 
-                    setNewUserStatus={setNewUserStatus}    
+            {newUserRole === Role.COMPANY && (
+                <AuthForm
+                    newUserRole={newUserRole}
+                    setNewUserRole={setNewUserRole}    
                 />
             )}
         </>

@@ -1,4 +1,4 @@
-.registration {
+.auth-form {
     box-sizing: border-box;
 
     &__background {
@@ -47,7 +47,7 @@
         cursor: pointer;
     }
 
-    &__popup-role-wrapper {
+    &__popup-status-wrapper {
         height: 60px;
         display: flex;
         align-items: center;
@@ -55,13 +55,9 @@
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 1.25px;
-
-        :last-child {
-            border-left: solid 1px #000000;
-        }
     }
 
-    &__popup-role-button {
+    &__popup-status-button {
         width: 50%;
         height: 100%;
 
@@ -79,6 +75,8 @@
 
         &:last-child {
             border-top-right-radius: 15px;
+            border-left: solid 1px #000000;
+
         }
 
         cursor: pointer;
@@ -90,6 +88,23 @@
         &:hover {
             background-color: #08b2e3;
         }
+    }
+
+    &__popup-status-info {
+        width: 100%;
+        height: 100%;
+
+        box-sizing: border-box;
+        background-color: #08b2e3;
+
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+        border-bottom: solid 1px #000000;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+
+        cursor: default;
     }
 
     &__popup-form {
@@ -108,7 +123,7 @@
         padding: 1px 10px 2px;
         outline: none;
         &:focus {
-            border: solid 1px #94bfa7;
+            outline: solid 1px #94bfa7;
         }
     }
 

@@ -1,25 +1,16 @@
 import React, { useState } from 'react';
+
 import { HeaderTemplate } from './HeaderTemplate';
+import { Role } from '../../types';
 
-export enum NewUserStatus {
-    INIT = 'init',
-    SIGN_IN = 'signIn',
-    REGISTRATION = 'registration',
-}
-
-export enum Role {
-    INIT = 'init',
-    APPLICANT = 'applicant',
-    COMPANY = 'company',
-}
 
 export function HeaderBehaviour() {
-    const [newUserStatus, setNewUserStatus] = useState(NewUserStatus.INIT);
+    const [newUserRole, setNewUserRole] = useState(Role.INIT);
 
     return (
         <HeaderTemplate
-            newUserStatus={newUserStatus}
-            setNewUserStatus={setNewUserStatus}
+            newUserRole={newUserRole}
+            setNewUserRole={setNewUserRole}
         />
     )
 }
