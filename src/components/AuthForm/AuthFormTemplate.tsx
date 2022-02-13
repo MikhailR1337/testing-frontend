@@ -7,28 +7,28 @@ import { FormValuesCompany, FormValuesCandidate } from './AuthFormBehaviour';
 import './AuthForm.scss';
 
 interface Props {
-    newUserRole: Role;
+    userRole: Role;
     FormValuesCandidate: FormValuesCandidate;
     formValuesCompany: FormValuesCompany;
     newUserStatus: NewUserStatus;
     valueCandidateHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
     valueCompanyHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onSubmit: (event: React.FormEvent<HTMLFormElement>, action: ApiActions) => void;
-    setNewUserRole: (status: Role) => void;
+    setUserRole: (status: Role) => void;
     newUserStatusHandler: (newUserStatus: NewUserStatus) => void;
 }
 
 const ROOT_CLASS = 'auth-form';
 
 export function AuthFormTemplate({
-    newUserRole,
+    userRole,
     FormValuesCandidate,
     formValuesCompany,
     newUserStatus,
     valueCandidateHandler,
     valueCompanyHandler,
     onSubmit,
-    setNewUserRole,
+    setUserRole,
     newUserStatusHandler,
 }: Props) {
     const registationStatusClassNames = classnames(`${ROOT_CLASS}__popup-status-button`, {
@@ -49,10 +49,10 @@ export function AuthFormTemplate({
     } = FormValuesCandidate;
 
     let action: ApiActions;
-    if (newUserRole === Role.CANDIDATE) {
+    if (userRole === Role.CANDIDATE) {
         action = ApiActions.LOGIN_CANDIDATE;
     }
-    if (newUserRole === Role.COMPANY) {
+    if (userRole === Role.COMPANY) {
         action = newUserStatus === NewUserStatus.REGISTRATION
             ? ApiActions.REGISTRATION_COMPANY
             : ApiActions.LOGIN_COMPANY;
@@ -63,12 +63,12 @@ export function AuthFormTemplate({
             <div className={`${ROOT_CLASS}__background`} />
             <div className={`${ROOT_CLASS}__popup-wrapper`}>
                 <div
-                    onClick={() => setNewUserRole(Role.INIT)}
+                    onClick={() => setUserRole(Role.INIT)}
                     className={`${ROOT_CLASS}__popup-close`}
                 >
                     X
                 </div>
-                {newUserRole === Role.CANDIDATE
+                {userRole === Role.CANDIDATE
                     && (
                         <>
                             <div className={`${ROOT_CLASS}__popup-status-wrapper`}>
@@ -99,7 +99,7 @@ export function AuthFormTemplate({
                     </>
                     )
                 }
-                {newUserRole === Role.COMPANY
+                {userRole === Role.COMPANY
                     && (
                         <>
                             <div className={`${ROOT_CLASS}__popup-status-wrapper`}>

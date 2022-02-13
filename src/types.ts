@@ -13,4 +13,6 @@ export enum Role {
     INIT = 'init',
     CANDIDATE = 'candidate',
     COMPANY = 'company',
+    AUTH_CANDIDATE = 'authCandidate',
+    AUTH_COMPANY = 'authCompany',
 }
