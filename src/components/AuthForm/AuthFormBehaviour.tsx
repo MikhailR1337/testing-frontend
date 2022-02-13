@@ -58,13 +58,13 @@ export function AuthFormBehaviour({
         let body: string;
         switch (action) {
             case (ApiActions.LOGIN_CANDIDATE): {
-                const candidateBody = { ...FormValuesCandidate, role: Role.AUTH_CANDIDATE };
-                body = JSON.stringify(candidateBody);
+                body = JSON.stringify(FormValuesCandidate);
                 break;
             }
             case (ApiActions.LOGIN_COMPANY): {
                 const { login, password } = FormValuesCompany;
-                const companyBody = { login, password, role: Role.AUTH_COMPANY };
+                const companyBody = { login, password };
+
                 body = JSON.stringify(companyBody);
                 break;
             }
