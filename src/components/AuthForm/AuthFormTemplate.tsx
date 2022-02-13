@@ -96,25 +96,25 @@ export function AuthFormTemplate({
                                     value='Войти'
                                 />
                             </form>
-                    </>
+                        </>
                     )
                 }
                 {userRole === Role.COMPANY
                     && (
                         <>
                             <div className={`${ROOT_CLASS}__popup-status-wrapper`}>
-                                    <div
-                                        onClick={() => newUserStatusHandler(NewUserStatus.SIGN_IN)}
-                                        className={singInButtonClassNames}
-                                    >
-                                        {NewUserStatus.SIGN_IN}
-                                    </div>
-                                    <div
-                                        onClick={() => newUserStatusHandler(NewUserStatus.REGISTRATION)}
-                                        className={registationStatusClassNames}
-                                    >
-                                        {NewUserStatus.REGISTRATION}
-                                    </div>
+                                <div
+                                    onClick={() => newUserStatusHandler(NewUserStatus.SIGN_IN)}
+                                    className={singInButtonClassNames}
+                                >
+                                    {NewUserStatus.SIGN_IN}
+                                </div>
+                                <div
+                                    onClick={() => newUserStatusHandler(NewUserStatus.REGISTRATION)}
+                                    className={registationStatusClassNames}
+                                >
+                                    {NewUserStatus.REGISTRATION}
+                                </div>
                             </div>
                             {newUserStatus !== NewUserStatus.INIT
                                 && (
@@ -122,17 +122,17 @@ export function AuthFormTemplate({
                                         onSubmit={(event) => onSubmit(event, action)}
                                         className={`${ROOT_CLASS}__popup-form`}
                                     >
-                                    {newUserStatus === NewUserStatus.REGISTRATION
-                                        && (
-                                            <input
-                                                onChange={(e) => valueCompanyHandler(e)}
-                                                className={`${ROOT_CLASS}__popup-form-input`}
-                                                name='name'
-                                                type='text'
-                                                placeholder='Название'
-                                                value={companyName}
-                                            />
-                                        )}
+                                        {newUserStatus === NewUserStatus.REGISTRATION
+                                            && (
+                                                <input
+                                                    onChange={(e) => valueCompanyHandler(e)}
+                                                    className={`${ROOT_CLASS}__popup-form-input`}
+                                                    name='name'
+                                                    type='text'
+                                                    placeholder='Название'
+                                                    value={companyName}
+                                                />
+                                            )}
                                         <input
                                             onChange={(e) => valueCompanyHandler(e)}
                                             className={`${ROOT_CLASS}__popup-form-input`}
@@ -152,19 +152,19 @@ export function AuthFormTemplate({
                                         {newUserStatus === NewUserStatus.REGISTRATION
                                             && (
                                                 <input
-                                                className={`${ROOT_CLASS}__popup-form-submit`}
-                                                type='submit'
-                                                value='Зарегистрироваться'
-                                            />
-                                        )}
+                                                    className={`${ROOT_CLASS}__popup-form-submit`}
+                                                    type='submit'
+                                                    value='Зарегистрироваться'
+                                                />
+                                            )}
                                         {newUserStatus === NewUserStatus.SIGN_IN
                                             && (
                                                 <input
-                                                className={`${ROOT_CLASS}__popup-form-submit`}
-                                                type='submit'
-                                                value='Войти'
-                                            />
-                                        )}
+                                                    className={`${ROOT_CLASS}__popup-form-submit`}
+                                                    type='submit'
+                                                    value='Войти'
+                                                />
+                                            )}
                                     </form>
                                 )
                             }
